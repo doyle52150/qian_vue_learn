@@ -1,0 +1,52 @@
+<!--
+ * @作者: kerwin
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!-- 指令 -->
+       <div v-bind:class="color">11111111111</div>
+       <div :class="isLogin?'red':'yellow'">22222222</div>
+
+       <!-- <img :src="url" alt="" width="300"> -->
+       <!-- <img :src="url" alt="" :width="width"> -->
+       <img v-bind="imgobj">
+
+       <button :disabled="isDisabled">click</button>
+    </div>
+    <script>
+        var obj = {
+            data(){
+                return {
+                    isLogin:true,
+                    color:"yellow",
+                    url:"https://pic.maizuo.com/usr/movie/34abe976a0baf62f0af6d9d41e7ef414.jpg?x-oss-process=image/quality,Q_70",
+                    width:300,
+                    isDisabled:false,
+                    imgobj:{
+                        width:200,
+                        src:"https://pic.maizuo.com/usr/movie/34abe976a0baf62f0af6d9d41e7ef414.jpg?x-oss-process=image/quality,Q_70"
+                    }
+                }
+            }
+        }
+        var app = Vue.createApp(obj).mount("#box")
+    </script>
+</body>
+</html>

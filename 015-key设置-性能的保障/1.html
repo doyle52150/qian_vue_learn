@@ -1,0 +1,95 @@
+<!--
+ * @作者: kerwin
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="({title,state,id},index) of datalist" :key="id">
+                {{title}}--{{index}}
+                <div v-if="state===0">
+                    <b>未付款</b>
+                </div>
+                <div v-else-if="state===1">
+                    <b>待发货</b>
+                </div>
+                <div v-else-if="state===2">
+                    <b>已结束</b>
+                </div>
+                <div v-else>
+                    <b>已取消</b>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // v-if v-else-if v-else
+
+        /*
+            1. 小括号
+            2. 支持解构
+            3. in === of (js迭代器)
+        
+        */
+        var obj = {
+            data() {
+                return {
+                    datalist:[
+                        {
+                            title:"手机",
+                            state:0,
+                            id:1
+                        },
+                        {
+                            title:"衣服",
+                            state:1,
+                            id:2
+                        },
+                        {
+                            title:"aaa",
+                            state:2,
+                            id:3
+                        },
+                        {
+                            title:"bbbb",
+                            state:3,
+                            id:4
+                        },
+                        {
+                            title:"手机1",
+                            state:0,
+                            id:5
+                        },
+                        {
+                            title:"衣服2",
+                            state:1,
+                            id:6
+                        },
+                        {
+                            title:"aaa1",
+                            state:2,
+                            id:7
+                        },
+                        {
+                            title:"bbbb2",
+                            state:3,
+                            id:8
+                        }
+                    ]
+                }
+            }
+        }
+        var app = Vue.createApp(obj).mount("#box")
+    </script>
+</body>
+</html>
